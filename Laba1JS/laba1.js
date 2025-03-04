@@ -112,10 +112,13 @@ function triangle(value1, type1, value2, type2) {
   // Округлення кутів до 2 знаків після коми
   alpha = Number(alpha.toFixed(2));
   beta = Number((90 - alpha).toFixed(2)); 
+  if (alpha <= 0 || alpha >= 90 || beta <= 0 || beta >= 90) {
+    console.error("Помилка: Вийшов трикутник з неможливими властивостями. Поміняйте введені значення на більш реальні");
+    return;
+}
 
   console.log(`Сторони трикутника: a = ${a}, b = ${b}, c = ${c}`);
   console.log(`Кути трикутника: alpha = ${alpha}, beta = ${beta}`);
   
   return "done";
 }
-
