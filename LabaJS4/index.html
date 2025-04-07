@@ -4,16 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hello World</title>
-    <script src="./LabaJS4.js" defer></script>
+    <script src="LabaJS4.js" defer></script>
     <script>
         function testSorting() {
-            let arr = Array.from({length: 100}, () => Math.random() < 0.1 ? undefined : Math.floor(Math.random() * 1000));
+            const length = 100;
+            const probability = 0.1;
+
+            let arr = Array.from({length}, () => Math.floor(Math.random() * 1000));
+
+            let arrUndefined = arr.map(value => Math.random() < probability ? undefined : value);
+
             let methods = ["bubbleSort", "selectionSort", "insertionSort", "shellSort", "quickSort"];
             
             console.clear();
             console.log("============================== Тестування алгоритмів сортування ==============================");
             console.log("Базовий масив");
             console.log(arr);
+            console.log("Базовий масив з undefined");
+            console.log(arrUndefined);
             methods.forEach(method => {
                 console.log("Теперішній метод:"+method+" за зростанням");
                 let copyArr = [...arr];
@@ -35,6 +43,28 @@
                 });
                 console.log("Відсортований масив");
                 console.log(copyArr);
+                console.log("==============================================================================================");
+
+                console.log("Теперішній метод:"+method+" за зростанням з undefined елементами");
+                let copyArrUndefined = [...arrUndefined];
+                let comparisons1 = 0, swaps1 = 0;
+                SortingLibrary[method](copyArrUndefined, true, (c, s) => {
+                    comparisons1 += c;
+                    swaps1 += s;
+                });
+
+                console.log("Відсортований масив");
+                console.log(copyArrUndefined);
+                console.log("==============================================================================================");
+                console.log("Теперішній метод:"+method+" за спаданням з undefined елементами");
+                copyArrUndefined = [...arrUndefined];
+                comparisons1 = 0; swaps1 = 0;
+                SortingLibrary[method](copyArrUndefined, false, (c, s) => {
+                    comparisons1 += c;
+                    swaps1 += s;
+                });
+                console.log("Відсортований масив");
+                console.log(copyArrUndefined);
                 console.log("==============================================================================================");
             });
         }
