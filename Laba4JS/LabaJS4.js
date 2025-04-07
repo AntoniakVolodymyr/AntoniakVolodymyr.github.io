@@ -40,7 +40,7 @@ const SortingLibrary = {
     },
 
     insertionSort(arr, ascending = true) {
-        let comparisons = 0, shifts = 0;
+        let comparisons = 0, swaps = 0;
         let len = arr.length;
         for (let i = 1; i < len; i++) {
             let key = arr[i];
@@ -53,7 +53,7 @@ const SortingLibrary = {
                 }
                 comparisons++;
                 arr[j + 1] = arr[j];
-                shifts++;
+                swaps++;
                 j--;
             }
             arr[j + 1] = key;
@@ -112,4 +112,3 @@ const SortingLibrary = {
         console.log(`Quick Sort Partition - К-сть порівнянь: ${comparisons} \n К-сть переміщень: ${swaps}`);
         return left;
     }
-};
