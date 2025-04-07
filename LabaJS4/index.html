@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello World</title>
+    <script src="LabaJS4.js" defer></script>
+    <script>
+        function testSorting() {
+            let arr = Array.from({length: 100}, () => Math.random() < 0.1 ? undefined : Math.floor(Math.random() * 1000));
+            let methods = ["bubbleSort", "selectionSort", "insertionSort", "shellSort", "quickSort"];
+            
+            console.clear();
+            console.log("============================== Тестування алгоритмів сортування ==============================");
+            console.log("Базовий масив");
+            console.log(arr);
+            methods.forEach(method => {
+                console.log("Теперішній метод:"+method+" за зростанням");
+                let copyArr = [...arr];
+                let comparisons = 0, swaps = 0;
+                SortingLibrary[method](copyArr, true, (c, s) => {
+                    comparisons += c;
+                    swaps += s;
+                });
+
+                console.log("Відсортований масив");
+                console.log(copyArr);
+                console.log("==============================================================================================");
+                console.log("Теперішній метод:"+method+" за спаданням");
+                copyArr = [...arr];
+                comparisons = 0; swaps = 0;
+                SortingLibrary[method](copyArr, false, (c, s) => {
+                    comparisons += c;
+                    swaps += s;
+                });
+                console.log("Відсортований масив");
+                console.log(copyArr);
+                console.log("==============================================================================================");
+            });
+        }
+
+        window.onload = testSorting;
+    </script>
+</head>
+<body>
+    <h1>Hello World</h1>
+</body>
+</html>
+
