@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 5 JS</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div id="setup">
+        <H1>Pixel Hunt</H1>
+        <label for="difficulty">Виберіть складність:</label>
+        <select id="difficulty">
+            <option value="easy">Легко(8 секунд)</option>
+            <option value="normal">Середня(4 секунди)</option>
+            <option value="hard">Dark Souls(1 секунда)</option>
+        </select>
+        <br><br>
+        <label for="color">Виберіть колір квадратика:</label>
+        <select id="color">
+            <option value="red">Червоний</option>
+            <option value="green">Зелений</option>
+            <option value="blue">Синій</option>
+            <option value="black">Чорний</option>
+            <option value="#F8F8F8">Blind attack(майже білий)</option>
+        </select>
+        <br><br>
+        <button id="start-button">Старт</button>
+    </div>
+    <div id="game">
+        <p>Рахунок: <span id="score">0</span></p>
+        <p>Час до кліку: <span id="time-left">0</span> секунд</p>
+        <p id="easter-egg" style="color: gray"></p>
+        <div id="block"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
