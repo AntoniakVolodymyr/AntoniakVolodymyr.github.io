@@ -1,0 +1,25 @@
+body {
+  font-family: sans-serif;
+  margin: 20px;
+}
+nav a {
+  margin-right: 20px;
+  text-decoration: none;
+  color: blue;
+}
+.category-list a {
+  display: block;
+  margin: 10px 0;
+  cursor: pointer;
+}
+.items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.item {
+  border: 1px solid #ccc;
+  padding: 10px;
+  width: 200px;
+  text-align: center;
+}

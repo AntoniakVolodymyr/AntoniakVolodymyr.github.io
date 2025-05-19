@@ -1,0 +1,10 @@
+{
+  "category": "ПК",
+  "items": [
+    { "id": 101, "name": "ARTLINE Gaming X43WHITE", "shortname": "computer", "description": "Дешманський низькобюджетний пк з RTX 3050", "price": "25 704₴","images":"images/pc.jpg" },
+    { "id": 102, "name": "HEXO Gaming Pro+", "shortname": "computer+", "description": "Ліпший троха, середньобюджетний пк з RTX 4060", "price": "34 599₴","images":"images/pc+.jpg" },
+    { "id": 103, "name": "ARTLINE Gaming MOD", "shortname": "computer++", "description": "Класний геймерський пк з RTX 4060Ti", "price": "63 715₴","images":"images/pc++.jpg" },
+    { "id": 104, "name": "CompX Stalker 2_350", "shortname": "computer+++", "description": "Спец комп'ютер під завомлення у стилі S.T.A.L.K.E.R.2 з кастомною RTX 4070Ti", "price": "128 499₴","images":"images/stalker_pc.jpg" },
+    { "id": 105, "name": "Potato PC", "shortname": "computer--", "description": "СЛАВА БОГУ, ВОНО ПРАЦЮЄ!!!!", "price": "50₴","images":"images/potato.jpg" }
+  ]
+}

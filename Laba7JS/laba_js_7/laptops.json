@@ -1,0 +1,10 @@
+{
+  "category": "Ноутбуки",
+  "items": [
+    { "id": 201, "name": "ASUS TUF Gaming F15", "shortname": "tuf", "description": "Потужний ігровий ноутбук з RTX 4060", "price": "54 999₴" },
+    { "id": 202, "name": "HP Pavilion 15", "shortname": "pavilion", "description": "Легкий офісний ноут", "price": "22 199₴" },
+    { "id": 203, "name": "Apple MacBook Air M2", "shortname": "fe", "description": "Стильний і тихий, а і ще зараза - неоправдано дорогий", "price": "102 499₴" },
+    { "id": 204, "name": "Lenovo IdeaPad Gaming 3", "shortname": "ideapad", "description": "Баланс потужності та ціни, нормальий вибір", "price": "32 899₴" }
+  ]
+}
+
