@@ -2,24 +2,39 @@ const cells = document.querySelectorAll('.cell');
 const message = document.getElementById('message');
 const restartBtn = document.getElementById('restart');
 const counterEl = document.getElementById('counter');
+const timerEl = document.getElementById('timer');
+const minMovesEl = document.getElementById('min-moves');
+
 let clickCount = 0;
 let grid = [];
+let timer = 0;
+let timerInterval;
 
 const variants = ['variant1.json', 'variant2.json', 'variant3.json'];
 const randomFile = variants[Math.floor(Math.random() * variants.length)];
 const url = `data/${randomFile}`;
 
+let originalGrid = [];  // копія початкового рівня
+
 fetch(url)
   .then(response => response.json())
   .then(data => {
-    grid = data;
+    grid = JSON.parse(JSON.stringify(data.grid));  // основне поле
+    originalGrid = JSON.parse(JSON.stringify(data.grid));  // зберігаємо копію
     render();
     attachEvents();
+    startTimer();
+    if (data.minMoves !== undefined) {
+      minMovesEl.textContent = `Мінімальна кількість ходів: ${data.minMoves}`;
+    } else {
+      minMovesEl.textContent = `Мінімальна кількість ходів: невідомо`;
+    }
   })
   .catch(err => {
     message.textContent = 'Помилка завантаження JSON';
     console.error(err);
   });
+
 
 function attachEvents() {
   cells.forEach(cell => {
@@ -61,14 +76,35 @@ function checkWin() {
     if (row.includes(1)) return;
   }
   message.textContent = 'Ви виграли!';
+  stopTimer();
 }
 
 function updateCounter() {
   counterEl.textContent = `Кількість кліків: ${clickCount}`;
 }
 
+function startTimer() {
+  timerInterval = setInterval(() => {
+    timer++;
+    timerEl.textContent = `Час: ${timer} сек`;
+  }, 1000);
+}
+
+function stopTimer() {
+  clearInterval(timerInterval);
+}
+
 restartBtn.addEventListener('click', () => {
-  location.reload();
+  grid = JSON.parse(JSON.stringify(originalGrid)); 
+  clickCount = 0;
+  timer = 0;
+  message.textContent = '';
+  updateCounter();
+  timerEl.textContent = `Час: 0 сек`;  
+  render();
+  stopTimer();
+  startTimer();
 });
+
 
 
