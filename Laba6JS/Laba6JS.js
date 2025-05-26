@@ -9,18 +9,18 @@ let clickCount = 0;
 let grid = [];
 let timer = 0;
 let timerInterval;
-
+let oldclicked = (-1,-1);
 const variants = ['variant1.json', 'variant2.json', 'variant3.json'];
 const randomFile = variants[Math.floor(Math.random() * variants.length)];
 const url = `data/${randomFile}`;
 
-let originalGrid = [];  // копія початкового рівня
+let originalGrid = [];
 
 fetch(url)
   .then(response => response.json())
   .then(data => {
-    grid = JSON.parse(JSON.stringify(data.grid));  // основне поле
-    originalGrid = JSON.parse(JSON.stringify(data.grid));  // зберігаємо копію
+    grid = JSON.parse(JSON.stringify(data.grid));
+    originalGrid = JSON.parse(JSON.stringify(data.grid));  
     render();
     attachEvents();
     startTimer();
@@ -41,12 +41,22 @@ function attachEvents() {
     const row = parseInt(cell.dataset.row);
     const col = parseInt(cell.dataset.col);
     cell.addEventListener('click', () => {
-      clickCount++;
       toggle(row, col);
       toggle(row - 1, col);
       toggle(row + 1, col);
       toggle(row, col - 1);
       toggle(row, col + 1);
+      clicked = (row,col);
+      if(clicked === oldclicked)
+      {
+        clickCount--;
+        oldclicked=(-1,-1);
+      }
+      else if(clicked != oldclicked)
+      {
+        clickCount++;
+        oldclicked = clicked;
+      }
       render();
       updateCounter();
       checkWin();
@@ -105,8 +115,3 @@ restartBtn.addEventListener('click', () => {
   stopTimer();
   startTimer();
 });
-
-
-
-
-
