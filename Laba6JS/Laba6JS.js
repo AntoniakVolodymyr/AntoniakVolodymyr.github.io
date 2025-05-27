@@ -4,6 +4,7 @@ const restartBtn = document.getElementById('restart');
 const counterEl = document.getElementById('counter');
 const timerEl = document.getElementById('timer');
 const minMovesEl = document.getElementById('min-moves');
+const newGame = document.getElementById('new-game');
 
 let clickCount = 0;
 let grid = [];
@@ -115,3 +116,7 @@ restartBtn.addEventListener('click', () => {
   stopTimer();
   startTimer();
 });
+
+newGame.addEventListener('click',()=>{
+  location.reload();
+})
