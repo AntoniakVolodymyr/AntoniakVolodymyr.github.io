@@ -5,23 +5,22 @@ const counterEl = document.getElementById('counter');
 const timerEl = document.getElementById('timer');
 const minMovesEl = document.getElementById('min-moves');
 const newGame = document.getElementById('new-game');
-
 let clickCount = 0;
 let grid = [];
+let originalGrid = [];
 let timer = 0;
 let timerInterval;
 let oldclicked = (-1,-1);
 const variants = ['variant1.json', 'variant2.json', 'variant3.json'];
-const randomFile = variants[Math.floor(Math.random() * variants.length)];
+let randomFile = variants[Math.floor(Math.random() * variants.length)];
 const url = `data/${randomFile}`;
 
-let originalGrid = [];
-
+function loadLevel(url){
 fetch(url)
   .then(response => response.json())
   .then(data => {
-    grid = JSON.parse(JSON.stringify(data.grid));
-    originalGrid = JSON.parse(JSON.stringify(data.grid));  
+    grid = JSON.parse(JSON.stringify(data.grid));  // основне поле
+    originalGrid = JSON.parse(JSON.stringify(data.grid));  // зберігаємо копію
     render();
     attachEvents();
     startTimer();
@@ -35,7 +34,9 @@ fetch(url)
     message.textContent = 'Помилка завантаження JSON';
     console.error(err);
   });
+}
 
+loadLevel(url);
 
 function attachEvents() {
   cells.forEach(cell => {
@@ -107,6 +108,11 @@ function stopTimer() {
 
 restartBtn.addEventListener('click', () => {
   grid = JSON.parse(JSON.stringify(originalGrid)); 
+  resetWorld();
+  startTimer();
+});
+function resetWorld()
+{
   clickCount = 0;
   timer = 0;
   message.textContent = '';
@@ -114,9 +120,13 @@ restartBtn.addEventListener('click', () => {
   timerEl.textContent = `Час: 0 сек`;  
   render();
   stopTimer();
-  startTimer();
-});
-
+  
+}
 newGame.addEventListener('click',()=>{
-  location.reload();
+  let otherVariants = variants.filter(v => v !== randomFile);
+  const newRandomFile = otherVariants[Math.floor(Math.random() * otherVariants.length)];
+  randomFile = newRandomFile;
+  const newUrl = `data/${newRandomFile}`;
+  resetWorld();
+  loadLevel(newUrl);
 })
