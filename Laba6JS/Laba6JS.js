@@ -22,7 +22,7 @@ fetch(url)
     grid = JSON.parse(JSON.stringify(data.grid));  // основне поле
     originalGrid = JSON.parse(JSON.stringify(data.grid));  // зберігаємо копію
     render();
-    attachEvents();
+    
     startTimer();
     if (data.minMoves !== undefined) {
       minMovesEl.textContent = `Мінімальна кількість ходів: ${data.minMoves}`;
@@ -37,7 +37,7 @@ fetch(url)
 }
 
 loadLevel(url);
-
+attachEvents();
 function attachEvents() {
   cells.forEach(cell => {
     const row = parseInt(cell.dataset.row);
@@ -120,7 +120,7 @@ function resetWorld()
   timerEl.textContent = `Час: 0 сек`;  
   render();
   stopTimer();
-  
+  oldclicked = (-1,-1);
 }
 newGame.addEventListener('click',()=>{
   let otherVariants = variants.filter(v => v !== randomFile);
