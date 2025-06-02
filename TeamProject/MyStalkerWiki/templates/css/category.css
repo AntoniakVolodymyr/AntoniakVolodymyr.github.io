@@ -1,0 +1,73 @@
+.category-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: flex-start; /* ключовий момент — розтягування з однаковими проміжками */
+}
+
+.category-button {
+  all: unset;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px;
+  border-radius: 8px;
+  background-color: rgba(15, 15, 15, 0.85);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+  color: #F9D342;
+  font-size: 20px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  user-select: none;
+  text-align: center;
+
+  flex: 0 1 calc(33.333% - 13.33px); /* 3 в ряд з урахуванням gap: 20px */
+  box-sizing: border-box;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+}
+
+.category-button img {
+  max-width: 300px;
+  height: auto;
+  border-radius: 6px;
+  box-shadow: 0 0 8px rgba(249, 211, 66, 0.7);
+  
+}
+
+.category-button:hover,
+.category-button:focus {
+  background-color: #F9D342;
+  color: #111;
+  box-shadow: 0 0 20px #F9D342;
+  outline: none;
+}
+
+.back {
+  font-size: 14px;
+  text-decoration: none;
+  color: #e0e0e0;
+  letter-spacing: 1px;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.back:hover,
+.back:focus {
+  color: #F9D342;
+  text-shadow: 0 0 6px #F9D342;
+  cursor: pointer;    
+}
+
+@media (min-width: 768px) and (max-width: 1700px) { 
+  .category-button {
+    flex: 0 1 calc(50% - 13.33px); /* 2 в ряд */
+  }
+}
+
+@media (max-width: 768px){
+  .category-button {
+    flex: 0 1 100%; /* 1 в ряд */
+  }
+}
+

@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+@import url('nav.css');
+@import url('main.css');
+@import url('category.css');
+@import url('search.css');
+@import url('footer.css');
+@import url('support.css');
+body {
+  font-family: 'Oswald', sans-serif;
+  background-image: url('../images/background.png');
+  background-size: cover;  
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/*Опис елементів*/
+.item-flex-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.item-left-column {
+  flex: 1 1 50%;
+}
+
+.item-right-column {
+  flex: 1 1 40%;
+}
+
+.stalker-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: rgba(20, 20, 20, 0.85);
+  color: #e0e0e0;
+  font-size: 20px;
+  text-shadow: 1px 1px 2px #000;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+}
+
+.stalker-table img {
+  display: block;
+  margin: 10px auto;
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  box-shadow: 0 0 8px rgba(249, 211, 66, 0.7);
+}
+
+.stalker-table th,
+.stalker-table td {
+  border: 1px solid #555;
+  padding: 10px 15px;
+  text-align: left;
+}
+
+.stalker-table .table-title {
+  text-align: center;
+  background-color: rgba(30, 30, 30, 0.95);
+  color: #F9D342;
+  text-transform: uppercase;
+  font-size: 22px;
+  letter-spacing: 1px;
+}
+
+.stalker-table tr:nth-child(even) td {
+  background-color: rgba(35, 35, 35, 0.8);
+}
+
+.stalker-table tr:hover td {
+  background-color: rgba(50, 50, 50, 0.9);
+  transition: background-color 0.3s ease;
+}
+
+.article-content-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.article-text {
+    flex: 1;
+    margin: 0;
+}
+
+.article-image {
+    float: right;
+    margin: 10px 0 10px 15px; /* лівий відступ для відстані від тексту */
+    padding-left: 10px;
+    max-width: 40%;
+    min-width: 300px;
+    height: auto;
+    border-radius: 6px;
+    object-fit: contain;
+}
+
+.article{
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .article {
+    display: flex;
+    flex-direction: column-reverse; /* Зображення вниз */
+  }
+  .article-image {
+    float: none;        /* Відключаємо float */
+    margin: 20px 0 0 0; /* Відступ зверху */
+    max-width: 100%;
+    width: 100%;
+  }
+}

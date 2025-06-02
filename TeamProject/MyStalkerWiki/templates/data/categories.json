@@ -1,0 +1,8 @@
+[
+  { "id": 1, "name": "Зброя", "dataname": "weapons.json", "image" : "templates/images/stalker2-zbroia-snaiperky.jpg"},
+  { "id": 2, "name": "Броня", "dataname": "armors.json", "image" : "templates/images/Seva_final_update.png"},
+  { "id": 3, "name": "Персонажі", "dataname": "character.json", "image" : "templates/images/persones.webp"},
+  { "id": 4, "name": "Розхідники", "dataname": "consumables.json", "image" : "templates/images/food.png"},
+  { "id": 5, "name": "Артефакти", "dataname": "artifacts.json", "image" : "templates/images/artifacts.jpg"},
+  { "id": 6, "name": "Мутанти", "dataname": "mutants.json", "image" : "templates/images/mutants.jpg"}
+]
